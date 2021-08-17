@@ -1,1 +1,0 @@
-alert("João Pedro é gay.");
