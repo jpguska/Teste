@@ -1,5 +1,6 @@
 var randomChosenColor;
 var UserClickPattern = [];
+var RandomChosenPattern = [];
 var UserClick;
 var CanPlay = true;
 var Stop = false;
@@ -13,24 +14,38 @@ function GameStart() {
     $("div.btn").click(function () {
         Stop = true;
         UserClick = this.id;
+        $(`div#${UserClick}`).animate({
+            opacity: 0.1
+        }, 0.1).animate({
+            opacity: 1
+        });
+        SoundSelector(UserClick);
         UserClickPattern.push(UserClick);
-        if (UserClick !== colorPicker(randomChosenColor)) {
-            
-        }
+        checkSelection(UserClickPattern);
+        
     })
     while (CanPlay === true) {
         while(Stop === false){
         randomChosenColor = Math.floor((Math.random() * 4) + 1);
+        RandomChosenPattern.push(colorPicker(randomChosenColor));
         SoundPicker(randomChosenColor);
 
-            $(`#${colorPicker(randomChosenColor)}`).animate({
+        $(`#${colorPicker(randomChosenColor)}`).animate({
                 opacity: 0.1
-            }, 0.1).animate({
+        }, 0.1).animate({
                 opacity: 1
-            });
+        });
             Stop = true;
         }
-        CanPlay = false;
+    }
+}
+function checkSelection(userclickpattern){
+    for(let i = 0; i < RandomChosenPattern.length; i++){
+        if(userclickpattern[i] !== RandomChosenPattern[i]){
+            CanPlay = false;
+            $("body").addClass("game-over");
+            $("#level-title").text = "FIM DE JOGO! O JP TE LOGROU!"
+        }
     }
 }
 
