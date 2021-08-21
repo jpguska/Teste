@@ -1,0 +1,1 @@
+console.log("João Pedro é gay");
