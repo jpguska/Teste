@@ -1,3 +1,5 @@
-public static main(String[] args){
-    System.out.println("oi fdp");
+public class jonjes {
+        public static void main(String[] args){
+        System.out.println("oi fdp");
+    }
 }
