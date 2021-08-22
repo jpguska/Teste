@@ -1,1 +1,6 @@
-console.log("João Pedro é gay");
+
+
+
+const fs = require('fs');
+
+fs.copyFileSync("arquivo.txt", "./out/teste.txt");
