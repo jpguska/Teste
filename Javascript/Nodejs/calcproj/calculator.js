@@ -19,11 +19,11 @@ app.post("/bmicalculator", function(request, response){
     response.send(`Seu BMI é de: ${Number(request.body.weight) / (Number(request.body.height) * Number(request.body.height))}`)
 });
 
-app.get("/speccalculator", function(request, response){
+app.get("/traitcalculator", function(request, response){
     response.sendFile(`${__dirname}/html/traitcalc.html`);
 });
 
-app.post("/speccalculator", function(request, response){
+app.post("/traitcalculator", function(request, response){
     //HERE COMES DA LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOONG BOAH
     let collection = calcTraited(Number(request.body.head))
     response.send(`Head: ${Number(request.body.head).toFixed(2)}cm <br> Eye: ${collection[0].toFixed(2)}cm <br> Nose: ${collection[1].toFixed(2)}cm <br> Lips: ${collection[2].toFixed(2)}cm <br> Cheek: ${collection[3].toFixed(2)}cm <br> Eye partition: ${(Number(request.body.eye) / 3).toFixed(2)}cm`);
@@ -35,7 +35,7 @@ app.get("/traditionalcalculator", function(request, response){
 
 app.post("/traditionalcalculator", function(request, response){
     let division = (Number(request.body.head) / 2) / 2;
-    response.send(`Medida da cabeça: ${Number(request.body.head)} <br> Medida do meio ${Number(request.body.head / 2)} <br> Divisa do meio ${division} <br> <hr>`)
+    response.send(`Medida da cabeça: ${Number(request.body.head)} <br> Medida do meio ${Number(request.body.head / 2)} <br> Divisa do meio ${division} <br> Queixo: ${division / 2}<br> <hr>`)
 });
 
 
