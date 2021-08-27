@@ -11,7 +11,11 @@ app.get("/", function(req, res){
         console.log(response.statusCode);
        response.on("data", function(data){
            const localweather = JSON.parse(data);
-           res.send(`<h1>${MedidaDeSerHumano(localweather.main.temp)}Cº</h1> <br> ${localweather.weather[0].description}`);
+           const icon = `https://openweathermap.org/img/wn/${localweather.weather[0].icon}@2x.png`; //localweather.weather[0].icon
+           res.write(`Temp: ${MedidaDeSerHumano(Number(localweather.main.temp))} <br>`);
+           res.write(`${localweather.weather[0].description}<br>`);
+           res.write(`<img src="https://openweathermap.org/img/wn/${localweather.weather[0].icon}@2x.png"> <br>`);
+           res.send();
        }) 
     });
 })
