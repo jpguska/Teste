@@ -1,25 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Baiano</title>
-</head>
-<body>
-
+<%- include("header") %> 
+<div class="box" id="heading">
     <h1> <%= dia %></h1>
-    <ul>
-        <% for(let x = 0; x < newlistitem.length; x++){%>
-            <li><%= newlistitem[x] %></li>
-        <%}%>
-    </ul>
+</div>
 
-    <form action="/" method="POST">
-        <input type="text" name="novoitem">
-        <button type="submit">Adicionar à lista</button>
-    </form>
+<div class="box">
+    <% for(let x = 0; x < newlistitem.length; x++){%>
+    <div class="item">
+        <input type="checkbox">
+        <p><%= newlistitem[x] %> </p>
+    </div>
+    <%}%>
+            <form class="item" action="/" method="POST">
+                <input type="text" name="novoitem" placeholder="seu a fazer" autocomplete="off">
+                <button type="submit">+</button>
+            </form>
+    </div>
+    
     
         
-</body>
-</html>
+<%- include("footer") %>
