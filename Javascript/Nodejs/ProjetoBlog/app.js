@@ -25,8 +25,16 @@ app.get("/about", function(req, res){
 app.get("/contact", function(req, res){
   res.render("contact.ejs", {content1: contactContent});
 })
-
-
+app.get("/compose", function(req, res){
+  res.render("compose.ejs");
+})
+app.post("/test", function(req, res){
+  let composition = {
+    title: req.body.title,
+    postcontent: req.body.postcontent
+  };
+  console.log(composition);
+})
 
 
 
