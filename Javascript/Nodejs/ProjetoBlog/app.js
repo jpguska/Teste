@@ -17,7 +17,13 @@ app.use(express.static("public"));
 
 //código para post e get
 app.get("/", function(req, res){
-  res.render("home.ejs");
+  res.render("home.ejs", {content1: homeStartingContent});
+})
+app.get("/about", function(req, res){
+  res.render("about.ejs", {content1: aboutContent});
+})
+app.get("/contact", function(req, res){
+  res.render("contact.ejs", {content1: contactContent});
 })
 
 
