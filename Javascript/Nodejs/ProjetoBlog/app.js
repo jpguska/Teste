@@ -1,5 +1,3 @@
-//jshint esversion:6
-
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
@@ -10,6 +8,8 @@ const contactContent = "Scelerisque eleifend donec pretium vulputate sapien. Rho
 
 const app = express();
 
+let posts = [];
+
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -17,7 +17,7 @@ app.use(express.static("public"));
 
 //código para post e get
 app.get("/", function(req, res){
-  res.render("home.ejs", {content1: homeStartingContent});
+  res.render("home.ejs", {content1: homeStartingContent, posts: posts});
 })
 app.get("/about", function(req, res){
   res.render("about.ejs", {content1: aboutContent});
@@ -28,12 +28,13 @@ app.get("/contact", function(req, res){
 app.get("/compose", function(req, res){
   res.render("compose.ejs");
 })
-app.post("/test", function(req, res){
+app.post("/", function(req, res){
   let composition = {
     title: req.body.title,
     postcontent: req.body.postcontent
   };
-  console.log(composition);
+  posts.push(composition);
+  res.render("home.ejs", {content1: homeStartingContent, posts: posts});
 })
 
 
