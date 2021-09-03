@@ -1,8 +1,8 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "C:\\Users\\Acid\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\Acid\\.nuget\\packages"
+      "/home/acid/.dotnet/store/|arch|/|tfm|",
+      "/home/acid/.nuget/packages"
     ]
   }
 }

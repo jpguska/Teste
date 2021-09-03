@@ -8,26 +8,25 @@
     "net5.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Acid\\.nuget\\packages\\": {}
+    "/home/acid/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Acid\\Documents\\Aprendizado\\C#\\encher o saco do jonjes\\Teste\\C#\\Teste.csproj",
+      "projectUniqueName": "/home/acid/Learning/Jonjes/Teste/C#/Teste.csproj",
       "projectName": "Teste",
-      "projectPath": "C:\\Users\\Acid\\Documents\\Aprendizado\\C#\\encher o saco do jonjes\\Teste\\C#\\Teste.csproj",
-      "packagesPath": "C:\\Users\\Acid\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Acid\\Documents\\Aprendizado\\C#\\encher o saco do jonjes\\Teste\\C#\\obj\\",
+      "projectPath": "/home/acid/Learning/Jonjes/Teste/C#/Teste.csproj",
+      "packagesPath": "/home/acid/.nuget/packages/",
+      "outputPath": "/home/acid/Learning/Jonjes/Teste/C#/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Acid\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/home/acid/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net5.0": {
@@ -54,12 +53,18 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[5.0.0, 5.0.0]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.205/RuntimeIdentifierGraph.json"
       }
     }
   }
