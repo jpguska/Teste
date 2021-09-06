@@ -42,6 +42,9 @@ const amigo1 = new Amigo({
 
 
 //finalização :)
+
+Amigo.updateOne({_id: "61341e4b5b15176c65809eaf"}, {nome: "Vevis"}, function(err){if(err){console.log(err)}else{console.log("Sucesso.")}});
+
 /*Amigo.insertMany([amigo, amigo1], function(err){
     if(err){
         console.log(err);
@@ -63,6 +66,10 @@ const amigo1 = new Amigo({
         });
     }
 })*/
+//JP odeia seus amigos!!!!
+
+
+Pessoa.deleteMany({nome: "Johns"}, function(error){callbackError(error)});
 
 Amigo.find(function(error, amigos){
     if(error){console.log(error)} else{
@@ -71,3 +78,7 @@ Amigo.find(function(error, amigos){
         })
     }
 })
+//O FLight é da Bahia
+function callbackError(error){
+    if(error){console.log(error)}else{console.log("Sucesso!")}
+}
