@@ -9,8 +9,13 @@ const pessoaSchema = new mongoose.Schema({
 });
 
 const amiguinhosSchema = new mongoose.Schema({
-    nome: String,
-    rating: Number,
+    nome: {type: String,
+        required: [true, "???????? conheço esse ai n"]
+    },
+    rating:{ type: Number,
+        min: 0,
+        max: 10
+    },
     note: String
 });
 //models
@@ -23,7 +28,7 @@ const pessoa = new Pessoa({
 });
 const amigo = new Amigo({
     nome: "Leocineos",
-    rating: 100,
+    rating: 10,
     note: "O mais fofo"
 });
 const amigo1 = new Amigo({
@@ -31,6 +36,8 @@ const amigo1 = new Amigo({
     rating: 0,
     note: "Um merda"
 });
+
+
 
 
 
@@ -46,7 +53,7 @@ const amigo1 = new Amigo({
 //pessoa.save();
 
 //recuperação de dados
-Amigo.find(function(err, amigos){
+/*Amigo.find(function(err, amigos){
     if(err){
         console.log(err);
     } else{
@@ -54,5 +61,13 @@ Amigo.find(function(err, amigos){
         amigos.forEach(function(amiguinho){
             console.log(amiguinho.nome);
         });
+    }
+})*/
+
+Amigo.find(function(error, amigos){
+    if(error){console.log(error)} else{
+        amigos.forEach(function(amigo){
+            console.log(`Nome: ${amigo.nome} Nota: ${amigo.note}`);
+        })
     }
 })
