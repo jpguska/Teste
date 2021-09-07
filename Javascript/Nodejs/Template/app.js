@@ -1,26 +1,31 @@
 const express = require("express");
 const bodyparser = require("body-parser");
 const app = express();
+const mongoose = require("mongoose");
+
 
 app.set("view-engine", "ejs");
 //instanciação da variável de vetor para lidar com escopo.
-let item = ["Irritar o João Pedro", "Xingar o João Pedro", "Ser xingado pelo João Pedro"];
 //
 app.use(bodyparser.urlencoded({
     extended: true
 }));
 app.use(express.static("public"));
 
+mongoose.connect("mongodb://localhost:27017/listaDB", {useNewUrlParser: true});
+
+const itemSchema = ({
+    nome: String
+});
+
+const Item = mongoose.model("item", itemSchema);
+
+
+
 app.get("/", function (req, res) {
-    let hoje = new Date();
-    let opcoes = {
-        week: "long",
-        day: "numeric",
-        month: "long"
-    };
 
     res.render("list.ejs", {
-        dia: hoje.toLocaleDateString("pt-BR", opcoes),
+        title: "hoje",
         newlistitem: item
     });
 
@@ -37,3 +42,7 @@ app.get("/about", function(req, res){
 app.listen(3000, function () {
     console.log("server on na porta 3000");
 })
+
+function exception(err){
+    if(err){console.log(err)} else{console.log("Sucesso!")}
+}

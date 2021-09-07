@@ -3,10 +3,7 @@ const mongoose = require("mongoose");
 mongoose.connect("mongodb://localhost:27017/amigosDB", {useNewUrlParser: true});
 
 //Schemas
-const pessoaSchema = new mongoose.Schema({
-    nome: String,
-    idade: Number
-});
+
 
 const amiguinhosSchema = new mongoose.Schema({
     nome: {type: String,
@@ -18,14 +15,17 @@ const amiguinhosSchema = new mongoose.Schema({
     },
     note: String
 });
+
+const pessoaSchema = new mongoose.Schema({
+    nome: String,
+    idade: Number,
+    amigo: amiguinhosSchema
+});
 //models
 const Amigo = mongoose.model("amigos", amiguinhosSchema);
 const Pessoa = mongoose.model("pessoas", pessoaSchema);
 //constantes para coleção
-const pessoa = new Pessoa({
-    nome: "Johns",
-    idade: 20
-});
+
 const amigo = new Amigo({
     nome: "Leocineos",
     rating: 10,
@@ -36,7 +36,16 @@ const amigo1 = new Amigo({
     rating: 0,
     note: "Um merda"
 });
-
+const pessoa = new Pessoa({
+    nome: "Johns",
+    idade: 20,
+    amigo: amigo1
+});
+const pessoa1 = new Pessoa({
+    nome: "Zikar",
+    idade: 24,
+    amigo: amigo
+})
 
 
 
@@ -69,7 +78,7 @@ Amigo.updateOne({_id: "61341e4b5b15176c65809eaf"}, {nome: "Vevis"}, function(err
 //JP odeia seus amigos!!!!
 
 
-Pessoa.deleteMany({nome: "Johns"}, function(error){callbackError(error)});
+pessoa1.save();
 
 Amigo.find(function(error, amigos){
     if(error){console.log(error)} else{
