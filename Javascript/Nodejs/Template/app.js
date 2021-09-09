@@ -18,20 +18,36 @@ const itemSchema = ({
     nome: String
 });
 
+const standardInsertionDB = [{nome: "irritar o JP"}, {nome: "ser xingado pelo JP"}, {nome: "encher o saco do JP"}];
+
 const Item = mongoose.model("item", itemSchema);
 
 
 
 app.get("/", function (req, res) {
-
-    res.render("list.ejs", {
-        title: "hoje",
-        newlistitem: item
+    Item.find(function(error, listItems){
+        
+        if(error){console.log(error)
+            if(listItems.length === 0 ){
+                Item.insertMany(standardInsertionDB, function(err){exception(err)});
+            }
+            res.redirect("/");
+        } else{
+            //mudei
+            res.render("list.ejs", {
+                title: "hoje",
+                newlistitem: listItems
+            });
+            }
     });
+   
 
 })
 app.post("/", function (req, res) {
-    item.push(req.body.novoitem);
+    let item = new Item({
+        nome: req.body.novoitem
+    });
+    item.save();
     res.redirect("/");
 })
 

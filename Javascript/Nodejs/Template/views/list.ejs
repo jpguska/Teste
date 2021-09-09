@@ -1,15 +1,15 @@
 <%- include("header") %> 
 <div class="box" id="heading">
-    <h1> <%= dia %></h1>
+    <h1> <%= title %></h1>
 </div>
 
 <div class="box">
-    <% for(let x = 0; x < newlistitem.length; x++){%>
-    <div class="item">
-        <input type="checkbox">
-        <p><%= newlistitem[x] %> </p>
-    </div>
-    <%}%>
+    <% newlistitem.forEach(function(item){ %>
+        <div class="item">
+            <input type="checkbox">
+            <p><%= item.nome %> </p>
+        </div>
+    <%})%>
             <form class="item" action="/" method="POST">
                 <input type="text" name="novoitem" placeholder="seu a fazer" autocomplete="off">
                 <button type="submit">+</button>
